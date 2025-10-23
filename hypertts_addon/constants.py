@@ -83,7 +83,7 @@ class MappingRuleType(enum.Enum):
 DIR_HYPERTTS_ADDON = 'hypertts_addon'
 DIR_SERVICES = 'services'
 
-ANKIWEB_ADDON_ID = '111623432'
+ANKIWEB_ADDON_ID = 'hyper-tts-fork'
 
 CONFIG_ADDON_NAME = 'anki-hyper-tts'
 if ANKIWEB_ADDON_ID in __file__:

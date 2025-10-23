@@ -22,16 +22,16 @@ else:
 
     # need to declare upfront whether we're doing crash reporting
     # ============================================================
-    from hypertts_addon import constants
-    addon_config = aqt.mw.addonManager.getConfig(constants.CONFIG_ADDON_NAME)
-    enable_stats_error_reporting = addon_config.get(constants.CONFIG_PREFERENCES, {}).\
-        get('error_handling', {}).get('error_stats_reporting', True)
-    if constants.ENABLE_SENTRY_CRASH_REPORTING and enable_stats_error_reporting:
-        import sentry_sdk        
-        # check version. some anki addons package an obsolete version of sentry_sdk
-        sentry_sdk_int_version = int(sentry_sdk.VERSION.replace('.', ''))
-        if sentry_sdk_int_version >= 155:        
-            sys._sentry_crash_reporting = True
+    # from hypertts_addon import constants
+    # addon_config = aqt.mw.addonManager.getConfig(constants.CONFIG_ADDON_NAME)
+    # enable_stats_error_reporting = addon_config.get(constants.CONFIG_PREFERENCES, {}).\
+    #     get('error_handling', {}).get('error_stats_reporting', True)
+    # if constants.ENABLE_SENTRY_CRASH_REPORTING and enable_stats_error_reporting:
+    #     import sentry_sdk        
+    #     # check version. some anki addons package an obsolete version of sentry_sdk
+    #     sentry_sdk_int_version = int(sentry_sdk.VERSION.replace('.', ''))
+    #     if sentry_sdk_int_version >= 155:        
+    #         sys._sentry_crash_reporting = True
 
     # setup logger
     # ============
@@ -161,18 +161,18 @@ else:
 
 
     # stats
-    from . import stats
-    from . import constants_events
-    if not hasattr(sys, '_pytest_mode') and enable_stats_error_reporting:
-        if configuration.enable_stats():
-            # initialize stats global object
-            sys._hypertts_stats_global = stats.StatsGlobal(ankiutils, 
-                                                        configuration.user_uuid,
-                                                        {
-                                                            'hypertts_days_since_install': configuration.days_since_install(),
-                                                            'hypertts_trial_registration_step': configuration.trial_registration_step.name,
-                                                            'hypertts_pro': configuration.hypertts_pro_api_key_set()
-                                                        },
-                                                        first_install,
-                                                        configuration.hypertts_pro_api_key_set()
-                                                        )
+    # from . import stats
+    # from . import constants_events
+    # if not hasattr(sys, '_pytest_mode') and enable_stats_error_reporting:
+    #     if configuration.enable_stats():
+    #         # initialize stats global object
+    #         sys._hypertts_stats_global = stats.StatsGlobal(ankiutils, 
+    #                                                     configuration.user_uuid,
+    #                                                     {
+    #                                                         'hypertts_days_since_install': configuration.days_since_install(),
+    #                                                         'hypertts_trial_registration_step': configuration.trial_registration_step.name,
+    #                                                         'hypertts_pro': configuration.hypertts_pro_api_key_set()
+    #                                                     },
+    #                                                     first_install,
+    #                                                     configuration.hypertts_pro_api_key_set()
+    #                                                     )

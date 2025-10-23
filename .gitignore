@@ -21,3 +21,6 @@ generated_audio.ogg
 .aider*
 .cache/
 .pki/
+
+# Virtual environments
+.venv
